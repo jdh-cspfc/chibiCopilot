@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./webview.css" />
+  <title>Chibi Copilot — Test Shell</title>
+</head>
+<body>
+  <div id="overlay-root">
+    <div id="chibi" class="idle"></div>
+    <canvas id="fx-canvas" width="300" height="300"></canvas>
+    <div id="test-controls" style="position:absolute;left:12px;bottom:12px;display:flex;gap:6px;pointer-events:auto;">
+      <button data-ev="aiStart">Start</button>
+      <button data-ev="aiPartial">Partial</button>
+      <button data-ev="aiDone">Done</button>
+      <button data-ev="aiError">Error</button>
+    </div>
+  </div>
+  <script src="./confetti.js"></script>
+  <script src="./webview.js"></script>
+  <script>
+    document.querySelectorAll('[data-ev]').forEach(b=>b.addEventListener('click',()=>window.dispatchEvent(new MessageEvent('message',{data:{type:b.dataset.ev}}))));
+  </script>
+</body>
+</html>

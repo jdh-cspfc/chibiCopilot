@@ -1,0 +1,102 @@
+{
+  "name": "chibi-copilot",
+  "displayName": "Chibi Copilot",
+  "description": "A tiny chibi companion that animates during AI activity in Cursor/VS Code.",
+  "version": "0.0.2",
+  "publisher": "zoe",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "chibiCopilot.toggle", "title": "Chibi Copilot: Toggle" },
+      { "command": "chibiCopilot.simulateStart", "title": "Chibi Copilot: Simulate AI Start" },
+      { "command": "chibiCopilot.simulatePartial", "title": "Chibi Copilot: Simulate AI Partial" },
+      { "command": "chibiCopilot.simulateDone", "title": "Chibi Copilot: Simulate AI Done" },
+      { "command": "chibiCopilot.simulateError", "title": "Chibi Copilot: Simulate AI Error" }
+    ],
+    "configuration": {
+      "title": "Chibi Copilot",
+      "properties": {
+        "chibiCopilot.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the chibi companion overlay."
+        },
+        "chibiCopilot.sizePx": {
+          "type": "number",
+          "default": 128,
+          "minimum": 64,
+          "maximum": 256,
+          "description": "Chibi size in pixels."
+        },
+        "chibiCopilot.opacity": {
+          "type": "number",
+          "default": 0.95,
+          "minimum": 0.1,
+          "maximum": 1,
+          "description": "Chibi opacity."
+        },
+        "chibiCopilot.corner": {
+          "type": "string",
+          "enum": ["bottomRight", "bottomLeft", "topRight", "topLeft"],
+          "default": "bottomRight",
+          "description": "Position inside the chibi view."
+        },
+        "chibiCopilot.offset": {
+          "type": "object",
+          "default": { "x": -16, "y": -16 },
+          "description": "Offset inside the view."
+        },
+        "chibiCopilot.reducedMotion": {
+          "type": "string",
+          "enum": ["system", "on", "off"],
+          "default": "system",
+          "description": "Respect system reduced motion, or force on/off."
+        },
+        "chibiCopilot.minimalMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use minimal dot/emote instead of full sprite."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "zoe-chibi-copilot",
+          "title": "Chibi",
+          "icon": "media/wand.svg"
+        }
+      ],
+      "panel": [
+        {
+          "id": "zoe-chibi-copilot-panel",
+          "title": "Chibi Copilot",
+          "icon": "media/wand.svg"
+        }
+      ]
+    },
+    "views": {
+      "zoe-chibi-copilot-panel": [
+        { "id": "zoe-chibi-copilot-panelView", "name": "Chibi Copilot", "type": "webview" }
+      ],
+      "zoe-chibi-copilot": [
+        { "id": "zoe-chibi-copilot-sidebarView", "name": "Chibi Copilot", "type": "webview" }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.88.0",
+    "typescript": "^5.4.0"
+  }
+}
