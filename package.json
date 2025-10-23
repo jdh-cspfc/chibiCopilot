@@ -18,7 +18,8 @@
       { "command": "chibiCopilot.simulateStart", "title": "Chibi Copilot: Simulate AI Start" },
       { "command": "chibiCopilot.simulatePartial", "title": "Chibi Copilot: Simulate AI Partial" },
       { "command": "chibiCopilot.simulateDone", "title": "Chibi Copilot: Simulate AI Done" },
-      { "command": "chibiCopilot.simulateError", "title": "Chibi Copilot: Simulate AI Error" }
+      { "command": "chibiCopilot.simulateError", "title": "Chibi Copilot: Simulate AI Error" },
+      { "command": "chibiCopilot.detectAICommand", "title": "Chibi Copilot: Detect AI Command", "internal": true }
     ],
     "configuration": {
       "title": "Chibi Copilot",

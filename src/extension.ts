@@ -54,12 +54,21 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 
-  // Detector (stubbed). Wire real Cursor events later.
+  // AI Activity Detector
   const detector = createDetector();
   detector.onStart(() => postAll({ type: 'aiStart' }));
   detector.onPartial(() => postAll({ type: 'aiPartial' }));
   detector.onDone(() => postAll({ type: 'aiDone' }));
   detector.onError(() => postAll({ type: 'aiError' }));
+
+  // Cleanup detector on deactivation
+  context.subscriptions.push({
+    dispose: () => {
+      if ((detector as any).cleanup) {
+        (detector as any).cleanup();
+      }
+    }
+  });
 
   // Optional: Status bar shortcut
   const bar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
