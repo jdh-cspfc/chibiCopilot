@@ -8,15 +8,19 @@ body { background: transparent; }
   image-rendering: auto; background-size: contain; background-repeat: no-repeat;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25)); pointer-events: auto;
 }
-/* Place the sprite at the bottom-right INSIDE this view */
-#chibi { right: 12px; bottom: 12px; }
+/* Center the chibi in the panel */
+#chibi { 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%);
+}
 
 /* Minimal mode dot */
 #chibi.minimal { width: 16px; height: 16px; border-radius: 999px; background: currentColor; }
 
-@keyframes bob { 0%{transform: translateY(0)} 50%{transform: translateY(-4px)} 100%{transform: translateY(0)} }
-@keyframes pulse { 0%{transform: scale(1)} 50%{transform: scale(1.03)} 100%{transform: scale(1)} }
-@keyframes shake { 0%,100%{transform: translateX(0)} 25%{transform: translateX(-2px)} 75%{transform: translateX(2px)} }
+@keyframes bob { 0%{transform: translate(-50%, -50%) translateY(0)} 50%{transform: translate(-50%, -50%) translateY(-4px)} 100%{transform: translate(-50%, -50%) translateY(0)} }
+@keyframes pulse { 0%{transform: translate(-50%, -50%) scale(1)} 50%{transform: translate(-50%, -50%) scale(1.03)} 100%{transform: translate(-50%, -50%) scale(1)} }
+@keyframes shake { 0%,100%{transform: translate(-50%, -50%) translateX(0)} 25%{transform: translate(-50%, -50%) translateX(-2px)} 75%{transform: translate(-50%, -50%) translateX(2px)} }
 #chibi.idle { animation: bob 2.2s ease-in-out infinite; }
 #chibi.thinking { animation: pulse 1.4s ease-in-out infinite; }
 #chibi.typing { animation: pulse 0.7s ease-in-out infinite; }

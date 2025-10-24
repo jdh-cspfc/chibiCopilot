@@ -22,13 +22,11 @@
       document.documentElement.style.setProperty('--size', state.cfg.sizePx + 'px');
       document.documentElement.style.setProperty('--opacity', state.cfg.opacity + '');
       chibi.classList.toggle('minimal', !!state.cfg.minimalMode);
-      // corner & offset inside view
+      // Center the chibi in the panel
       chibi.style.top = chibi.style.right = chibi.style.bottom = chibi.style.left = '';
-      const pos = state.cfg.corner, off = state.cfg.offset || {x:0,y:0};
-      if (pos.includes('bottom')) chibi.style.bottom = (12 + Math.max(0, -off.y)) + 'px';
-      if (pos.includes('top')) chibi.style.top = (12 + Math.max(0, off.y)) + 'px';
-      if (pos.includes('Right')) chibi.style.right = (12 + Math.max(0, -off.x)) + 'px';
-      if (pos.includes('Left')) chibi.style.left = (12 + Math.max(0, off.x)) + 'px';
+      chibi.style.left = '50%';
+      chibi.style.top = '50%';
+      chibi.style.transform = 'translate(-50%, -50%)';
       document.body.style.display = state.cfg.enabled ? 'block' : 'none';
     }
   
