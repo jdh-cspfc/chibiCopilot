@@ -4,6 +4,10 @@
   "description": "A tiny chibi companion that animates during AI activity in Cursor/VS Code.",
   "version": "0.0.2",
   "publisher": "zoe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/chibiCopilot.git"
+  },
   "engines": {
     "vscode": "^1.88.0"
   },
@@ -94,10 +98,14 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "watch": "tsc -watch -p ."
+    "watch": "tsc -watch -p .",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "prepackage": "npm run build"
   },
   "devDependencies": {
     "@types/vscode": "^1.88.0",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "@vscode/vsce": "^2.24.0"
   }
 }

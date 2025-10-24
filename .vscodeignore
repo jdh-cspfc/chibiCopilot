@@ -1,4 +1,31 @@
-**/*.ts
-**/*.map
+# Source files
+src/**
+tsconfig.json
+
+# Development files
+.vscode/**
+.vscode-test/**
+*.vsix
+
+# Dependencies
 node_modules/**
-!out/**
+package-lock.json
+
+# Build artifacts (keep out/ for the extension)
+out/*.map
+
+# Git
+.git/**
+.gitignore
+
+# Documentation
+README.md
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
