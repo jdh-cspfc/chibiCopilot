@@ -8,20 +8,39 @@ body { background: transparent; }
   image-rendering: auto; background-size: contain; background-repeat: no-repeat;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25)); pointer-events: auto;
 }
-/* Center the chibi in the panel */
+/* Default positioning - center */
 #chibi { 
   left: 50%; 
   top: 50%; 
   transform: translate(-50%, -50%);
 }
 
+/* Position classes */
+#chibi.center { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+#chibi.bottomRight { left: auto; top: auto; right: 12px; bottom: 12px; transform: none; }
+#chibi.bottomLeft { left: 12px; top: auto; right: auto; bottom: 12px; transform: none; }
+#chibi.topRight { left: auto; top: 12px; right: 12px; bottom: auto; transform: none; }
+#chibi.topLeft { left: 12px; top: 12px; right: auto; bottom: auto; transform: none; }
+
 /* Minimal mode dot */
 #chibi.minimal { width: 16px; height: 16px; border-radius: 999px; background: currentColor; }
 
-@keyframes bob { 0%{transform: translate(-50%, -50%) translateY(0)} 50%{transform: translate(-50%, -50%) translateY(-4px)} 100%{transform: translate(-50%, -50%) translateY(0)} }
-@keyframes pulse { 0%{transform: translate(-50%, -50%) scale(1)} 50%{transform: translate(-50%, -50%) scale(1.03)} 100%{transform: translate(-50%, -50%) scale(1)} }
-@keyframes shake { 0%,100%{transform: translate(-50%, -50%) translateX(0)} 25%{transform: translate(-50%, -50%) translateX(-2px)} 75%{transform: translate(-50%, -50%) translateX(2px)} }
-#chibi.idle { animation: bob 2.2s ease-in-out infinite; }
-#chibi.thinking { animation: pulse 1.4s ease-in-out infinite; }
-#chibi.typing { animation: pulse 0.7s ease-in-out infinite; }
-#chibi.error { animation: shake 0.3s linear 0s 6; }
+/* Animations for centered positioning */
+#chibi.center.idle { animation: bob-center 2.2s ease-in-out infinite; }
+#chibi.center.thinking { animation: pulse-center 1.4s ease-in-out infinite; }
+#chibi.center.typing { animation: pulse-center 0.7s ease-in-out infinite; }
+#chibi.center.error { animation: shake-center 0.3s linear 0s 6; }
+
+/* Animations for corner positioning */
+#chibi.bottomRight.idle, #chibi.bottomLeft.idle, #chibi.topRight.idle, #chibi.topLeft.idle { animation: bob-corner 2.2s ease-in-out infinite; }
+#chibi.bottomRight.thinking, #chibi.bottomLeft.thinking, #chibi.topRight.thinking, #chibi.topLeft.thinking { animation: pulse-corner 1.4s ease-in-out infinite; }
+#chibi.bottomRight.typing, #chibi.bottomLeft.typing, #chibi.topRight.typing, #chibi.topLeft.typing { animation: pulse-corner 0.7s ease-in-out infinite; }
+#chibi.bottomRight.error, #chibi.bottomLeft.error, #chibi.topRight.error, #chibi.topLeft.error { animation: shake-corner 0.3s linear 0s 6; }
+
+@keyframes bob-center { 0%{transform: translate(-50%, -50%) translateY(0)} 50%{transform: translate(-50%, -50%) translateY(-4px)} 100%{transform: translate(-50%, -50%) translateY(0)} }
+@keyframes pulse-center { 0%{transform: translate(-50%, -50%) scale(1)} 50%{transform: translate(-50%, -50%) scale(1.03)} 100%{transform: translate(-50%, -50%) scale(1)} }
+@keyframes shake-center { 0%,100%{transform: translate(-50%, -50%) translateX(0)} 25%{transform: translate(-50%, -50%) translateX(-2px)} 75%{transform: translate(-50%, -50%) translateX(2px)} }
+
+@keyframes bob-corner { 0%{transform: translateY(0)} 50%{transform: translateY(-4px)} 100%{transform: translateY(0)} }
+@keyframes pulse-corner { 0%{transform: scale(1)} 50%{transform: scale(1.03)} 100%{transform: scale(1)} }
+@keyframes shake-corner { 0%,100%{transform: translateX(0)} 25%{transform: translateX(-2px)} 75%{transform: translateX(2px)} }

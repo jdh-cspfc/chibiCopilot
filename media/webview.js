@@ -22,11 +22,16 @@
       document.documentElement.style.setProperty('--size', state.cfg.sizePx + 'px');
       document.documentElement.style.setProperty('--opacity', state.cfg.opacity + '');
       chibi.classList.toggle('minimal', !!state.cfg.minimalMode);
-      // Center the chibi in the panel
-      chibi.style.top = chibi.style.right = chibi.style.bottom = chibi.style.left = '';
-      chibi.style.left = '50%';
-      chibi.style.top = '50%';
-      chibi.style.transform = 'translate(-50%, -50%)';
+      
+      // Apply positioning based on configuration
+      const position = state.cfg.corner || 'center';
+      
+      // Remove all position classes
+      chibi.classList.remove('center', 'bottomRight', 'bottomLeft', 'topRight', 'topLeft');
+      
+      // Add the appropriate position class
+      chibi.classList.add(position);
+      
       document.body.style.display = state.cfg.enabled ? 'block' : 'none';
     }
   

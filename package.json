@@ -19,6 +19,12 @@
   "contributes": {
     "commands": [
       { "command": "chibiCopilot.toggle", "title": "Chibi Copilot: Toggle" },
+      { "command": "chibiCopilot.setPosition", "title": "Chibi Copilot: Set Position" },
+      { "command": "chibiCopilot.setPositionCenter", "title": "Center", "category": "Chibi Position" },
+      { "command": "chibiCopilot.setPositionBottomRight", "title": "Bottom Right", "category": "Chibi Position" },
+      { "command": "chibiCopilot.setPositionBottomLeft", "title": "Bottom Left", "category": "Chibi Position" },
+      { "command": "chibiCopilot.setPositionTopRight", "title": "Top Right", "category": "Chibi Position" },
+      { "command": "chibiCopilot.setPositionTopLeft", "title": "Top Left", "category": "Chibi Position" },
       { "command": "chibiCopilot.simulateStart", "title": "Chibi Copilot: Simulate AI Start" },
       { "command": "chibiCopilot.simulatePartial", "title": "Chibi Copilot: Simulate AI Partial" },
       { "command": "chibiCopilot.simulateDone", "title": "Chibi Copilot: Simulate AI Done" },
@@ -49,7 +55,7 @@
         },
         "chibiCopilot.corner": {
           "type": "string",
-          "enum": ["bottomRight", "bottomLeft", "topRight", "topLeft"],
+          "enum": ["center", "bottomRight", "bottomLeft", "topRight", "topLeft"],
           "default": "bottomRight",
           "description": "Position inside the chibi view."
         },
